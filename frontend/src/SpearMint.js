@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { 
   connectWallet,
-  getCurrentWalletConnected 
+  getCurrentWalletConnected,
+  mintNFT 
 } from "./utils/interact.js";
 
-const Minter = (props) => {
+const SpearMint = (props) => {
 
   //State variables
   const [walletAddress, setWallet] = useState("");
@@ -28,7 +29,8 @@ const Minter = (props) => {
   };
 
   const onMintPressed = async () => { //TODO: implement
-    
+    const { status } = await mintNFT(url, name, description);
+    setStatus(status);  
   };
 
   function addWalletListener() {
@@ -57,7 +59,7 @@ const Minter = (props) => {
 }
 
   return (
-    <div className="Minter">
+    <div className="spear-mint">
       <button id="walletButton" onClick={connectWalletPressed}>
         {walletAddress.length > 0 ? (
           "Connected: " +
@@ -70,7 +72,7 @@ const Minter = (props) => {
       </button>
 
       <br></br>
-      <h1 id="title">⚗️ Simple Mint NFT Minter</h1>
+      <h1 id="title">⚗️ SpearMint NFT Minter</h1>
       <p>
         Simply add your asset's link, name, and description, then press "Mint."
       </p>
@@ -104,4 +106,4 @@ const Minter = (props) => {
   );
 };
 
-export default Minter;
+export default SpearMint;

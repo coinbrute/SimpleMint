@@ -1,10 +1,10 @@
 import './App.css';
-import Minter from './Minter'
+import SpearMint from './SpearMint'
 
 function App() {
   return (
     <div className="App">
-      <Minter></Minter>
+      <SpearMint></SpearMint>
     </div>
   );
 }
